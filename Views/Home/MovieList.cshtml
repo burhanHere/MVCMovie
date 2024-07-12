@@ -1,0 +1,48 @@
+@model List<Movie>
+@{
+    ViewData["Title"] = "Movies List";
+}
+
+<div>
+    <div class="d-flex align-items-center justify-content-between">
+        <h1 class="display-5 mb-0">Movie List</h1>
+        <input class="form-control search-box w-25" type="search" placeholder="Search Your Movie Here..."
+            name="searchBox" id="searchBox" onchange="SetHref()">
+    </div>
+    <table class=" table">
+        <thead>
+            <tr class="table-info">
+                <th>Name</th>
+                <th>Release Date</th>
+                <th>Genre</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                @foreach (var i in Model)
+                {
+                    <tr class="table-dark text-info">
+                        <td>@i.Title</td>
+                        <td>@i.ReleaseDate.Date.ToString("dd-MM-yyyy")</td>
+                        <td>@i.Genre</td>
+                        <td>@Math.Round(i.Price, 2)</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan=" 4" class="text-center color-info"> No Movies Are Found.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <section id="alu">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis vitae soluta a, ut praesentium nostrum
+        possimus,
+        fugiat eaque eos tempore quae assumenda adipisci cumque quos voluptates totam et voluptas. Explicabo.
+    </section>
+
+</div>
